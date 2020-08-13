@@ -1,0 +1,550 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+/*
+font-family: 'Inter', monospace;
+font-family: 'Inter', sans-serif;
+*/
+
+//@font-face {
+//    font-family: 'DiodrumVoltarenArabic';
+//    src: url('../font/DiodrumArabic-Extralight.ttf') format('truetype');
+//    font-weight: 200;
+//    font-style: normal;
+//}
+//
+//@font-face {
+//    font-family: 'DiodrumVoltarenArabic';
+//    src: url('../font/DiodrumArabic-Light.ttf') format('truetype');
+//    font-weight: 300;
+//    font-style: normal;
+//}
+
+//@font-face {
+//    font-family: 'DiodrumVoltarenArabic';
+//    src: url('../font/DiodrumArabic-Regular.ttf') format('truetype');
+//    font-weight: normal;
+//    font-style: normal;
+//}
+
+//@font-face {
+//    font-family: 'DiodrumVoltarenArabic';
+//    src: url('../font/DiodrumArabic-Medium.ttf') format('truetype');
+//    font-weight: 500;
+//    font-style: normal;
+//}
+//
+//@font-face {
+//    font-family: 'DiodrumVoltarenArabic';
+//    src: url('../font/DiodrumArabic-Semibold.ttf') format('truetype');
+//    font-weight: 600;
+//    font-style: normal;
+//}
+//
+//@font-face {
+//    font-family: 'DiodrumVoltarenArabic';
+//    src: url('../font/DiodrumArabic-Bold.ttf') format('truetype');
+//    font-weight: 700;
+//    font-style: normal;
+//}
+//
+@font-face {
+    font-family: 'DiodrumVoltarenArabic';
+    src: url('../font/Diodrum.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url('../font/Helvetica.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// mixin
+@mixin flex($direction, $wrap, $justify, $align) {
+    display: flex;
+    flex-flow: $direction $wrap;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin mediamax($max) {
+    @media screen and (max-width: #{$max}px) {
+        @content;
+    }
+}
+
+// ============================== mixin
+
+// variables
+$text-blue: #2D2971; // main text color
+// variables
+
+// reset style
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+// reset style
+
+.wrapper {
+    min-width: 320px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    @include flex(column, nowrap, flex-start, center);
+    //border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+////
+.section-title {
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 65px;
+    line-height: 63px;
+    text-transform: capitalize;
+    text-align: center;
+    color: $text-blue;
+    padding: 30px 0;
+
+    @include mediamax(425) {
+        font-size: 30px;
+        line-height: 35px;
+    }
+}
+
+.section-btn {
+    width: 190px;
+    height: 55px;
+    line-height: 60px;
+    font-family: 'Helvetica';
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    background-color: #021d65;
+    border-radius: 15px;
+}
+////
+
+
+// header start
+.header {
+    width: 100%;
+    height: 70px;
+
+    @include mediamax(425) {
+        height: 40px;
+        background-image: linear-gradient(to right, #EE5100, #F38200);
+    }
+}
+// header end
+
+// content start
+.content {
+    width: 100%;
+    @include flex(column, nowrap, flex-start, center);
+
+    // banner start
+    .banner {
+        width: 100%;
+        @include flex(row, nowrap, flex-end, center);
+        position: relative;
+        border: 1px solid #000;
+
+        @include mediamax(425) {
+            flex-flow: column-reverse wrap;
+            border: initial;
+            margin-top: 40px;
+        }
+
+        &-text {
+            width: 50%;
+            height: 100%;
+            @include flex(column, nowrap, space-around, flex-start);
+            position: absolute;
+            top: 0;
+            left: 10%;
+
+            @include mediamax(425) {
+                width: 100%;
+                position: relative;
+                left: initial;
+                padding: 0 15px;
+            }
+
+            &-title {
+                font-family: 'Inter';
+                font-size: 70px;
+                line-height: 68px;
+                font-weight: 600;
+                background-image: linear-gradient(to right, #F16500, #FBE12B);
+                color: transparent;
+                background-clip: text;
+
+                @include mediamax(425) {
+                    font-size: 30px;
+                    line-height: 35px;
+                    text-align: left;
+                    padding: 30px 0;
+                }
+            }
+        }
+
+        &-img {
+            display: block;
+            object-fit: cover;
+        }
+
+        &-absolut {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+
+            @include mediamax(425) {
+                width: 50%;
+                bottom: 47%;
+                left: 10%;
+            }
+        }
+    }
+    // banner end
+
+    //symptoms start
+    .symptoms {
+        width: 100%;
+        @include flex(column, nowrap, flex-start, center);
+        padding: 50px 0;
+
+        &-title {
+            @include mediamax(425) {
+                width: 100%;
+                padding: 0 15px;
+                text-align: left;
+            }
+        }
+
+        &-list {
+            width: 100%;
+            @include flex(column, nowrap, flex-start, flex-start);
+            padding: 50px 0;
+
+            &-row {
+                width: 100%;
+                @include flex(row, wrap, center, flex-start);
+                padding-bottom: 50px;
+
+                &-item {
+                    width: 20%;
+                    @include flex(column, nowrap, flex-start, center);
+                    padding: 15px 0 0;
+
+                    @include mediamax(425) {
+                        width: 33%;
+                        padding: 15px 10px 0;
+                    }
+
+                    &-img {
+
+                    }
+
+                    &-title {
+                        font-family: 'Roboto';
+                        font-weight: 500;
+                        font-size: 16px;
+                        padding: 30px 0 0;
+                    }
+                }
+            }
+        }
+    }
+    //symptoms end
+
+    // medicament start
+    .medicament {
+        width: 100%;
+        @include flex(row, nowrap, flex-end, center);
+        position: relative;
+        margin-bottom: 80px;
+
+        @include mediamax(425) {
+            flex-flow: column-reverse wrap;
+            margin-bottom: 0;
+        }
+
+        &-text {
+            width: 50%;
+            height: 100%;
+            @include flex(column, nowrap, flex-start, flex-start);
+            position: absolute;
+            top: 0;
+            left: 10%;
+            padding: 40px 0;
+            background: url("../img/text-bg.png") no-repeat 0 0;
+
+            @include mediamax(425) {
+                width: 100%;
+                position: relative;
+                left: initial;
+                padding: 40px 15px;
+            }
+
+            &-title {
+                font-family: 'Inter';
+                font-size: 70px;
+                line-height: 68px;
+                font-weight: 600;
+                background-image: linear-gradient(to right, #F16500, #FBE12B);
+                color: transparent;
+                background-clip: text;
+
+                @include mediamax(425) {
+                    font-size: 30px;
+                    line-height: 35px;
+                }
+            }
+
+            &-desc {
+                width: 72%;
+                font-family: 'Helvetica';
+                font-size: 16px;
+                line-height: 22px;
+                font-weight: 400;
+                padding: 50px 0;
+
+                @include mediamax(425) {
+                    width: 100%;
+                    padding: 25px 0;
+                }
+            }
+
+            &-btn {
+                width: 227px;
+            }
+        }
+
+        &-img {
+            object-fit: cover;
+        }
+    }
+    // medicament end
+
+    // voltaren start
+    .voltaren {
+        width: 100%;
+        @include flex(column, wrap, flex-start, center);
+        background: #fff url('../img/voltaren-background.png') no-repeat 0 100%;
+        padding: 100px 20%;
+
+        @include mediamax(425) {
+            padding: 25px 15px;
+            background: initial;
+        }
+
+        &-title {
+            text-transform: initial;
+
+            @include mediamax(425) {
+                text-align: left;
+            }
+        }
+
+        &-list {
+            width: 100%;
+            @include flex(row, wrap, space-between, flex-start);
+
+            &-item {
+                width: 47%;
+                @include flex(column, nowrap, flex-start, center);
+                padding: 40px 0 0;
+
+                @include mediamax(425) {
+                    width: 100%;
+                }
+
+                &-img {
+                    
+                }
+
+                &-title {
+                    font-family: 'Inter';
+                    font-size: 25px;
+                    line-height: 55px;
+                    font-weight: 600;
+                    text-transform: capitalize;
+                    color: $text-blue;
+                    padding: 30px 0 0;
+                }
+
+                &-desc {
+                    font-family: 'Helvetica';
+                    font-size: 16px;
+                    line-height: 22px;
+                    font-weight: 400;
+                    text-align: center;
+                    padding: 10px 0 60px;
+                }
+
+                &-btn {
+
+                }
+            }
+        }
+    }
+    // voltaren end
+
+    // feedback start
+    .feedback {
+        width: 100%;
+        @include flex(column, nowrap, flex-start, center);
+        padding: 140px 10% 60px;
+
+        @include mediamax(425) {
+            padding: 40px 15px;
+        }
+
+        &-title {
+            font-family: 'Inter';
+            font-size: 45px;
+            line-height: 68px;
+            font-weight: 600;
+            background-image: linear-gradient(to right, #F16500, #FBE12B);
+            color: transparent;
+            background-clip: text;
+            text-transform: capitalize;
+            padding-bottom: 60px;
+        }
+
+        &-list {
+            width: 100%;
+            @include flex(row, wrap, flex-start, center);
+
+            &-item {
+                width: 50%;
+                @include flex(row, wrap, flex-start, center);
+                padding: 0 0 50px;
+
+                @include mediamax(425) {
+                    width: 100%;
+                }
+
+                &-left {
+                    @include mediamax(425) {
+                        @include flex(row, nowrap, flex-start, center);
+                    }
+
+                    &-img {
+                        object-fit: cover;
+                        padding: 0 25px 0 0;
+
+                        @include mediamax(425) {
+                            width: 50%;
+                        }
+                    }
+
+                    &-mb {
+                        display: none;
+
+                        @include mediamax(425) {
+                            display: block;
+                        }
+
+                        &-name {
+                            font-family: 'Inter';
+                            font-size: 25px;
+                            font-weight: 600;
+                            text-transform: capitalize;
+                            color: $text-blue;
+                        }
+
+                        &-position {
+                            font-family: 'Inter';
+                            font-size: 16px;
+                            font-weight: 600;
+                            background-image: linear-gradient(to right, #F16500, #FBE12B);
+                            color: transparent;
+                            background-clip: text;
+                            padding: 5px 0 20px;
+                        }
+                    }
+                }
+
+                &-text {
+                    width: 55%;
+                    @include flex(column, nowrap, flex-start, flex-start);
+
+                    @include mediamax(425) {
+                        width: 100%;
+                    }
+
+                    &-name {
+                        font-family: 'Inter';
+                        font-size: 25px;
+                        font-weight: 600;
+                        text-transform: capitalize;
+                        color: $text-blue;
+
+                        @include mediamax(425) {
+                            display: none;
+                        }
+                    }
+
+                    &-position {
+                        font-family: 'Inter';
+                        font-size: 16px;
+                        font-weight: 600;
+                        background-image: linear-gradient(to right, #F16500, #FBE12B);
+                        color: transparent;
+                        background-clip: text;
+                        padding: 5px 0 20px;
+
+                        @include mediamax(425) {
+                            display: none;
+                        }
+                    }
+
+                    &-desc {
+                        font-family: 'Inter';
+                        font-size: 16px;
+                        line-height: 25px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+    // feedback end
+
+    // vider start
+    .video {
+        width: 100%;
+        padding: 0 20px;
+
+        @include mediamax(425) {
+            padding: 0;
+        }
+    }
+    // vider end
+}
+// content end
+
+
